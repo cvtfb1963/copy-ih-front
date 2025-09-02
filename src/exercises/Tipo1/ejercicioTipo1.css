@@ -1,0 +1,421 @@
+/* Duolingo-inspired game-like color palette */
+:root {
+  --primary-green: #58cc02;
+  --primary-green-dark: #46a302;
+  --primary-blue: #1cb0f6;
+  --primary-blue-dark: #1899d6;
+  --accent-yellow: #ffc800;
+  --accent-orange: #ff9600;
+  --accent-purple: #ce82ff;
+  --accent-pink: #ff6b9d;
+  --success-green: #58cc02;
+  --error-red: #ff4b4b;
+  --warning-orange: #ff9600;
+  --text-dark: #3c3c43;
+  --text-medium: #777777;
+  --text-light: #afafaf;
+  --bg-light: #f7f7f7;
+  --bg-white: #ffffff;
+  --border-light: #e5e5e5;
+  --shadow-game: 0 4px 0 #e5e5e5;
+  --shadow-hover: 0 6px 0 #d0d0d0;
+  --shadow-pressed: 0 2px 0 #e5e5e5;
+}
+
+.et1-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 20px;
+  position: relative;
+}
+
+/* Add some floating decorative elements */
+.et1-container::before {
+  content: '🎯';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.et1-container::after {
+  content: '⭐';
+  position: absolute;
+  bottom: 20px;
+  left: 30px;
+  font-size: 1.5rem;
+  animation: float 4s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Game-like card sections */
+.et1-container > div {
+  background: var(--bg-white);
+  margin: 0;
+  padding: 2rem;
+  border-radius: 25px;
+  border: 3px solid var(--primary-blue);
+  box-shadow: 0 8px 0 var(--primary-blue-dark);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: visible;
+  transform: translateY(0);
+}
+
+.et1-container > div::before {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  height: 8px;
+  background: linear-gradient(90deg, var(--accent-yellow), var(--accent-orange), var(--accent-pink), var(--accent-purple));
+  border-radius: 25px 25px 0 0;
+  z-index: 1;
+}
+
+.et1-container > div:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 var(--primary-blue-dark);
+}
+
+.et1-container > div:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 0 var(--primary-blue-dark);
+}
+
+.et1-container > div > div {
+  display: flex;
+  flex-direction: row;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+/* Playful column styling */
+.et1-column {
+  margin: 0;
+  text-align: center;
+  min-width: 120px;
+  flex: 1;
+}
+
+.et1-column h5 {
+  height: auto;
+  min-height: 45px;
+  text-align: center;
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--bg-white);
+  margin: 0 0 1.5rem 0;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%);
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 0 var(--primary-green-dark);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.et1-column h5:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 var(--primary-green-dark);
+}
+
+.et1-column h5::after {
+  content: '✨';
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: translateY(-50%) scale(1); }
+  50% { opacity: 1; transform: translateY(-50%) scale(1.2); }
+}
+
+/* Fun input and paragraph styling */
+.et1-column input,
+.et1-column select,
+.et1-column p {
+  padding: 1rem;
+  margin: 0.75rem 0;
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  min-height: 20px;
+  border-radius: 15px;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Game-like input fields */
+.et1-column input,
+.et1-column select {
+  width: 100%;
+  max-width: 130px;
+  background: var(--bg-white);
+  border: 3px solid var(--border-light);
+  color: var(--text-dark);
+  outline: none;
+  box-shadow: 0 3px 0 #d0d0d0;
+  font-size: 1.1rem;
+}
+
+.et1-column input:focus,
+.et1-column select:focus {
+  border-color: var(--primary-blue);
+  box-shadow: 0 3px 0 var(--primary-blue-dark), 0 0 0 4px rgba(28, 176, 246, 0.2);
+  transform: translateY(-1px) scale(1.02);
+  background: #f8fcff;
+}
+
+.et1-column input:disabled,
+.et1-column select:disabled {
+  background-color: #f9f9f9;
+  cursor: not-allowed;
+  opacity: 0.8;
+  transform: none;
+}
+
+/* Success and error states with fun animations */
+.et1-column input[style*="green"],
+.et1-column select[style*="green"] {
+  border-color: var(--success-green) !important;
+  background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
+  box-shadow: 0 3px 0 var(--primary-green-dark), 0 0 0 4px rgba(88, 204, 2, 0.2);
+  animation: success-bounce 0.6s ease-out;
+}
+
+.et1-column input[style*="red"],
+.et1-column select[style*="red"] {
+  border-color: var(--error-red) !important;
+  background: linear-gradient(135deg, #fff5f5 0%, #fecaca 100%);
+  box-shadow: 0 3px 0 #dc2626, 0 0 0 4px rgba(255, 75, 75, 0.2);
+  animation: error-shake 0.8s ease-out;
+}
+
+@keyframes success-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes error-shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Playful static text */
+.et1-column p {
+  color: var(--text-dark);
+  background: transparent;
+  border: 3px solid transparent;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+/* Special separator styling */
+.et1-column p[style*="fontWeight: 600"] {
+  color: var(--accent-orange);
+  font-size: 2rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  animation: pulse-separator 2s ease-in-out infinite;
+}
+
+@keyframes pulse-separator {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.et1-column-value {
+  height: auto;
+  min-height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Fun answer text styling */
+.et1-column-answer {
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  cursor: pointer;
+  min-height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.et1-column-answer:hover {
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  transform: translateY(-2px) scale(1.05);
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.et1-column-answer::before {
+  content: '💡';
+  position: absolute;
+  left: -25px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.et1-column-answer:hover::before {
+  opacity: 1;
+  left: -20px;
+}
+
+/* Custom dropdown with game styling */
+.et1-column select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23058ce4' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 1rem center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: 3rem;
+}
+
+.et1-column select:hover {
+  background-color: #f8fcff;
+  border-color: var(--primary-blue);
+}
+
+/* Add some game-like decorative elements */
+.et1-column-value::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-yellow);
+  border-radius: 50%;
+  top: -3px;
+  right: -3px;
+  opacity: 0;
+  animation: dot-appear 0.5s ease-out 0.3s forwards;
+}
+
+@keyframes dot-appear {
+  from { opacity: 0; transform: scale(0); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .et1-container {
+    padding: 1rem 0.5rem;
+    gap: 1rem;
+    border-radius: 15px;
+  }
+  
+  .et1-container > div {
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+  
+  .et1-container > div > div {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  
+  .et1-column {
+    min-width: 100px;
+  }
+  
+  .et1-column input,
+  .et1-column select {
+    max-width: 110px;
+  }
+  
+  .et1-column h5 {
+    font-size: 1rem;
+    padding: 0.75rem;
+    border-radius: 15px;
+  }
+}
+
+/* Accessibility with reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.1s !important;
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.et1-column input:focus-visible,
+.et1-column select:focus-visible {
+  outline: 3px solid var(--accent-yellow);
+  outline-offset: 2px;
+  border-color: var(--primary-blue);
+}
+
+/* Special effects for correct answers */
+.et1-column input[style*="green"] + .et1-column-answer {
+  color: var(--success-green);
+}
+
+.et1-column input[style*="red"] + .et1-column-answer {
+  color: var(--error-red);
+}
+
+/* Add celebration effect for completed exercises */
+@keyframes celebrate {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(5deg); }
+  50% { transform: scale(1.2) rotate(-5deg); }
+  75% { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.et1-container.celebration > div {
+  animation: celebrate 1s ease-in-out;
+}
+
+/* Print styles */
+@media print {
+  .et1-container > div {
+    box-shadow: none;
+    border: 2px solid #ccc;
+    background: white;
+  }
+  
+  .et1-container::before,
+  .et1-container::after {
+    display: none;
+  }
+}

@@ -1,0 +1,356 @@
+/* ===== DUOLINGO-INSPIRED GAME DESIGN FOR TIPO21 ===== */
+
+/* Decorative floating emojis */
+.et21-container::before {
+  content: '🎧📝✍️🔊✨';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Main container with game-like background */
+.et21-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 10px;
+  flex-direction: column;
+  width: calc(100vw - 40px);
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 25px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  overflow: visible;
+}
+
+/* Groups container */
+.et21-groups-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+/* Words container with grid layout */
+.et21-words-container {
+  width: 100%;
+  margin: 15px 0;
+  gap: 15px;
+  row-gap: 15px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-auto-flow: column;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rainbow border effect for word containers */
+.et21-words-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: -3px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, 
+    #96ceb4, #ffeaa7, #dda0dd, 
+    #ff6b6b);
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Individual word cards */
+.et21-word {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff 0%, #f1f5f9 100%);
+  padding: 15px;
+  margin: 8px auto;
+  border-radius: 15px;
+  width: 250px;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 2px solid #e2e8f0;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Word card hover effects */
+.et21-word:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: #58cc02;
+}
+
+/* Number badge styling */
+.et21-word > span {
+  border-radius: 50%;
+  background: linear-gradient(145deg, #58cc02 0%, #4ade80 100%);
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 12px;
+  box-shadow: 
+    0 4px 12px rgba(88, 204, 2, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+/* Number badge glow effect */
+.et21-word > span::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #58cc02, #4ade80);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et21-word:hover > span::after {
+  opacity: 0.3;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50% { transform: scale(1.1); opacity: 0.6; }
+}
+
+/* Input container */
+.et21-word > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+
+/* Input field styling */
+.et21-word input {
+  flex: 1;
+  width: 100%;
+  border-radius: 12px !important;
+  height: 35px !important;
+  padding: 8px 12px !important;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+  margin-bottom: 0 !important;
+}
+
+.et21-word input:focus {
+  outline: none !important;
+  box-shadow: 
+    0 0 0 3px rgba(88, 204, 2, 0.1),
+    0 4px 12px rgba(88, 204, 2, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-1px) !important;
+}
+
+.et21-word input:hover {
+  box-shadow: 
+    0 4px 12px rgba(28, 176, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Success state */
+.et21-word input[style*="green"] {
+  border-color: #58cc02 !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Error state */
+.et21-word input[style*="red"] {
+  border-color: #ff6b6b !important;
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  animation: errorShake 0.6s ease-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Answer feedback text */
+.et21-word p {
+  font-size: 13px !important;
+  font-weight: bold !important;
+  line-height: 1.2 !important;
+  margin: 5px 0 0 0 !important;
+  padding: 6px 10px !important;
+  border-radius: 8px !important;
+  background: linear-gradient(145deg, #f7fafc 0%, #e2e8f0 100%) !important;
+  border: 2px solid #cbd5e0 !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  transition: all 0.3s ease !important;
+  text-align: center !important;
+  min-width: 80px !important;
+}
+
+/* Correct answer styling */
+.et21-word p[style*="green"] {
+  color: #22c55e !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  border-color: #22c55e !important;
+}
+
+/* Incorrect answer styling */
+.et21-word p[style*="red"] {
+  color: #ef4444 !important;
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  border-color: #ef4444 !important;
+}
+
+/* Listening icon for pronunciation exercises */
+.et21-word::after {
+  content: '🎤';
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 16px;
+  opacity: 0.6;
+  animation: micPulse 2s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .et21-container {
+    width: calc(100vw - 20px);
+    padding: 20px 15px;
+    margin: 15px 5px;
+  }
+  
+  .et21-word {
+    width: 220px;
+    padding: 12px;
+  }
+  
+  .et21-word > span {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .et21-word input {
+    height: 30px !important;
+    font-size: 13px !important;
+    padding: 6px 10px !important;
+  }
+  
+  .et21-words-container {
+    padding: 15px;
+    gap: 12px;
+    row-gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .et21-container {
+    width: calc(100vw - 10px);
+    padding: 15px 10px;
+    margin: 10px 2px;
+  }
+  
+  .et21-word {
+    width: 200px;
+    padding: 10px;
+  }
+  
+  .et21-word > span {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    margin-right: 8px;
+  }
+  
+  .et21-word input {
+    height: 28px !important;
+    font-size: 12px !important;
+    padding: 5px 8px !important;
+  }
+  
+  .et21-word::after {
+    font-size: 14px;
+    top: 6px;
+    right: 10px;
+  }
+}
+
+/* Accessibility for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

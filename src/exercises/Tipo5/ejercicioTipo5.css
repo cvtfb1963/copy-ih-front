@@ -1,0 +1,284 @@
+/* ===== TIPO 5 - FILL IN THE BLANKS EXERCISE ===== */
+
+.et5-sentence {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  padding: 25px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.et5-sentence::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et5-sentence:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.et5-sentence:hover::before {
+  opacity: 1;
+}
+
+/* Question Number Badge */
+.et5-sentence span {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 15px;
+  box-shadow: 
+    0 6px 20px rgba(102, 126, 234, 0.3),
+    0 2px 8px rgba(102, 126, 234, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.et5-sentence span::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et5-sentence:hover span {
+  transform: scale(1.1);
+}
+
+.et5-sentence:hover span::before {
+  opacity: 1;
+}
+
+/* Sentence Text */
+.et5-sentence p {
+  margin: 8px 4px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #2d3748;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
+
+/* Input Fields */
+.et5-sentence input {
+  margin: 8px 6px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  color: #2d3748;
+  min-width: 120px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  outline: none;
+  position: relative;
+}
+
+.et5-sentence input:focus {
+  border-color: #667eea;
+  box-shadow: 
+    0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 4px 16px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.et5-sentence input:hover:not(:focus) {
+  border-color: #cbd5e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Input States - Correct/Incorrect */
+.et5-sentence input[style*="green"] {
+  border-color: #48bb78 !important;
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%) !important;
+  color: #22543d !important;
+  box-shadow: 
+    0 0 0 3px rgba(72, 187, 120, 0.1),
+    0 4px 16px rgba(72, 187, 120, 0.2) !important;
+}
+
+.et5-sentence input[style*="red"] {
+  border-color: #f56565 !important;
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  color: #742a2a !important;
+  box-shadow: 
+    0 0 0 3px rgba(245, 101, 101, 0.1),
+    0 4px 16px rgba(245, 101, 101, 0.2) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* Answer Display */
+.et5-sentence p[style*="cursor: pointer"] {
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin: 4px 6px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid #cbd5e0;
+  cursor: pointer !important;
+}
+
+.et5-sentence p[style*="cursor: pointer"]:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.et5-sentence p[style*="color: red"] {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  color: #c53030 !important;
+  border-color: #feb2b2 !important;
+}
+
+.et5-sentence p[style*="color: green"] {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%) !important;
+  color: #2f855a !important;
+  border-color: #9ae6b4 !important;
+}
+
+/* Text to Conjugate Badge */
+.et5-ttc {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 10px 16px;
+  margin: 8px 6px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  box-shadow: 
+    0 4px 16px rgba(102, 126, 234, 0.3),
+    0 2px 8px rgba(102, 126, 234, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.et5-ttc::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.et5-sentence:hover .et5-ttc::before {
+  left: 100%;
+}
+
+.et5-ttc:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 6px 20px rgba(102, 126, 234, 0.4),
+    0 3px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .et5-sentence {
+    padding: 20px 15px;
+    margin: 15px 0;
+  }
+  
+  .et5-sentence span {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 12px;
+  }
+  
+  .et5-sentence p {
+    font-size: 16px;
+    margin: 6px 3px;
+  }
+  
+  .et5-sentence input {
+    padding: 10px 12px;
+    font-size: 15px;
+    min-width: 100px;
+    margin: 6px 4px;
+  }
+  
+  .et5-ttc {
+    padding: 8px 12px;
+    font-size: 12px;
+    margin: 6px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .et5-sentence {
+    padding: 15px 12px;
+  }
+  
+  .et5-sentence span {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .et5-sentence p {
+    font-size: 15px;
+  }
+  
+  .et5-sentence input {
+    padding: 8px 10px;
+    font-size: 14px;
+    min-width: 80px;
+  }
+}

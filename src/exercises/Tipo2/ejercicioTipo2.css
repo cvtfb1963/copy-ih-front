@@ -1,0 +1,443 @@
+/* 🎮 TIPO2 EXERCISE - DUOLINGO-STYLE GAME DESIGN 🎮 */
+
+/* Floating decorative elements */
+.et2-container::before {
+  content: '🎯';
+  position: absolute;
+  top: 20%;
+  right: 10%;
+  font-size: 2rem;
+  animation: float 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.et2-container::after {
+  content: '⭐';
+  position: absolute;
+  top: 15%;
+  left: 8%;
+  font-size: 1.8rem;
+  animation: float 4s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-15px) rotate(5deg); }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 0.8; }
+}
+
+/* Main container */
+.et2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: fit-content;
+  min-width: 100%;
+  position: relative;
+  padding: 2rem 1rem;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 1rem 0;
+}
+
+/* Fieldset sections - Game-like cards */
+.et2-container > fieldset {
+  margin: 1.5rem 0;
+  padding: 2rem;
+  border-radius: 20px;
+  border: 4px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(45deg, #58cc02, #89e219, #1cb0f6, #ffc800) border-box;
+  width: fit-content;
+  min-width: 97%;
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(88, 204, 2, 0.15);
+  animation: slideIn 0.6s ease-out;
+}
+
+.et2-container > fieldset:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(88, 204, 2, 0.25);
+}
+
+.et2-container > fieldset:nth-child(even) {
+  animation-delay: 0.2s;
+}
+
+.et2-container > fieldset:nth-child(odd) {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Legend styling - Playful headers */
+.et2-container legend {
+  margin-left: 10px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #58cc02;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 1.5rem;
+  background: linear-gradient(135deg, #58cc02 0%, #89e219 100%);
+  color: white;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(88, 204, 2, 0.3);
+  position: relative;
+  animation: pulse 2s infinite;
+  border: 3px solid #fff;
+}
+
+.et2-container legend::before {
+  content: '📝';
+  margin-right: 0.5rem;
+}
+/* 
+.et2-container fieldset:nth-child(1) legend::before { content: '✅'; }
+.et2-container fieldset:nth-child(2) legend::before { content: '❌'; }
+.et2-container fieldset:nth-child(3) legend::before { content: '❓'; } */
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Table styling */
+.et2-container table {
+  min-width: 100%;
+  border-collapse: separate;
+  border-spacing: 0.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+  border-radius: 15px;
+  padding: 1rem;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Table headers */
+.et2-container th {
+  text-align: center;
+  padding: 1rem;
+  min-width: 120px;
+  background: linear-gradient(135deg, #1cb0f6 0%, #4fc3f7 100%);
+  color: white;
+  font-weight: 700;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(28, 176, 246, 0.3);
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  border: 2px solid #fff;
+}
+
+.et2-container th:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(28, 176, 246, 0.4);
+}
+
+.et2-container th:first-child {
+  background: linear-gradient(135deg, #ffc800 0%, #ffeb3b 100%);
+  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3);
+  color: #333;
+}
+
+.et2-container th:first-child:hover {
+  box-shadow: 0 6px 20px rgba(255, 200, 0, 0.4);
+}
+
+/* Table cells */
+.et2-container td {
+  text-align: center;
+  padding: 1rem;
+  min-width: 120px;
+  background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.et2-container td:first-child {
+  font-weight: 700;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  color: #58cc02;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%);
+  border: 2px solid #58cc02;
+  font-size: 1rem;
+}
+
+.et2-container td:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Field container */
+.et2-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* Inputs and selects - Game-style */
+.et2-container input, 
+.et2-container select {
+  padding: 0.8rem;
+  margin: 0.3rem 0;
+  flex: 1;
+  width: 100%;
+  border-radius: 15px;
+  outline: none;
+  border: 3px solid #e0e0e0;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.et2-container input:focus, 
+.et2-container select:focus {
+  border-color: #1cb0f6;
+  box-shadow: 0 0 0 4px rgba(28, 176, 246, 0.2), 0 4px 15px rgba(28, 176, 246, 0.3);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
+}
+
+.et2-container input:hover, 
+.et2-container select:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Success state - Green */
+.et2-container input[style*="green"], 
+.et2-container select[style*="green"] {
+  border-color: #58cc02 !important;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%) !important;
+  color: #2e7d32 !important;
+  animation: successBounce 0.5s ease;
+}
+
+.et2-container input[style*="green"]:focus, 
+.et2-container select[style*="green"]:focus {
+  box-shadow: 0 0 0 4px rgba(88, 204, 2, 0.2), 0 4px 15px rgba(88, 204, 2, 0.3) !important;
+}
+
+/* Error state - Red */
+.et2-container input[style*="red"], 
+.et2-container select[style*="red"] {
+  border-color: #ff4757 !important;
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%) !important;
+  color: #c62828 !important;
+  animation: errorShake 0.5s ease;
+}
+
+.et2-container input[style*="red"]:focus, 
+.et2-container select[style*="red"]:focus {
+  box-shadow: 0 0 0 4px rgba(255, 71, 87, 0.2), 0 4px 15px rgba(255, 71, 87, 0.3) !important;
+}
+
+@keyframes successBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Select dropdown styling */
+.et2-container select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231cb0f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+  padding-right: 3rem;
+}
+
+.et2-container select:hover {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2358cc02' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+
+/* Question mark styling */
+.et2-field span {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1cb0f6;
+  margin-left: 0.5rem;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* Answer text styling */
+.et2-field p {
+  font-size: 0.85rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 12px !important;
+  margin: 0.5rem 0 !important;
+  transition: all 0.3s ease !important;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  border: 2px solid transparent !important;
+  position: relative !important;
+}
+
+.et2-field p:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+.et2-field p[style*="red"] {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%) !important;
+  border-color: #ff4757 !important;
+}
+
+.et2-field p[style*="green"] {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%) !important;
+  border-color: #58cc02 !important;
+}
+
+.et2-field p[style*="black"] {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%) !important;
+  border-color: #1cb0f6 !important;
+  color: #1976d2 !important;
+}
+
+/* Shown answers styling */
+.et2-field div[style*="display: flex"] {
+  font-weight: 700;
+  color: #58cc02;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1rem;
+  padding: 0.8rem;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0fff0 100%);
+  border-radius: 12px;
+  border: 2px solid #58cc02;
+  box-shadow: 0 2px 10px rgba(88, 204, 2, 0.2);
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.et2-field div[style*="display: flex"]::before {
+  content: '✨';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  font-size: 1rem;
+  animation: sparkle 2s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .et2-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .et2-container > fieldset {
+    padding: 1rem;
+    min-width: 95%;
+  }
+  
+  .et2-container legend {
+    font-size: 1.2rem;
+    padding: 0.4rem 1rem;
+  }
+  
+  .et2-container th,
+  .et2-container td {
+    padding: 0.5rem;
+    min-width: 80px;
+    font-size: 0.85rem;
+  }
+  
+  .et2-container input,
+  .et2-container select {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+  }
+  
+  .et2-container table {
+    border-spacing: 0.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .et2-container::before,
+  .et2-container::after {
+    display: none;
+  }
+  
+  .et2-container legend {
+    font-size: 1rem;
+    padding: 0.3rem 0.8rem;
+  }
+  
+  .et2-container th,
+  .et2-container td {
+    padding: 0.4rem;
+    min-width: 60px;
+    font-size: 0.8rem;
+  }
+  
+  .et2-container input,
+  .et2-container select {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .et2-container::before,
+  .et2-container::after,
+  .et2-container legend,
+  .et2-field span {
+    animation: none;
+  }
+  
+  .et2-container > fieldset,
+  .et2-container th,
+  .et2-container td,
+  .et2-container input,
+  .et2-container select,
+  .et2-field p {
+    transition: none;
+  }
+}

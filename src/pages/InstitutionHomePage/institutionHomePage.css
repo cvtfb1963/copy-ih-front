@@ -1,0 +1,11 @@
+.ins-hp-c {
+  padding: 10px;
+}
+
+.ins-hp-part {
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  margin: 10px;
+}

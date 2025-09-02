@@ -1,0 +1,28 @@
+.et7-container {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+.tipo7Select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  text-overflow: "";
+  width: 40px;
+  font-size: 11px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.aside-formula {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  flex-wrap: wrap;
+}

@@ -1,0 +1,443 @@
+/* Tipo28 - Grammar Verb Tense Analysis Exercise */
+/* Game-like styling with grammar and analysis theme */
+
+.et28-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  overflow: hidden;
+}
+
+.et28-container::before {
+  content: "📝 🤔 ⏰ ✨ 🎯";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  animation: floatEmojis 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.et28-container::after {
+  content: "🔍 📚 💡 ⭐ 🌟";
+  position: absolute;
+  bottom: -10px;
+  right: 20px;
+  font-size: 20px;
+  animation: floatEmojis 3s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+.et28-container * {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Sentence Display */
+.et28-sentence {
+  margin: 20px 0;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: center;
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 100%);
+  color: white;
+  padding: 20px 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(88, 204, 2, 0.3);
+  position: relative;
+  transform: translateY(0);
+  animation: gentleBounce 2s ease-in-out infinite;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.et28-sentence::before {
+  content: "💬";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 30px;
+  animation: spin 4s linear infinite;
+}
+
+.et28-sentence::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+  background-size: 400% 400%;
+  border-radius: 23px;
+  z-index: -1;
+  animation: rainbowBorder 3s ease-in-out infinite;
+}
+
+/* Question Containers */
+.et28-pregunta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 25px 0;
+  padding: 25px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e6ff;
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  transform: translateY(0);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.et28-pregunta::before {
+  content: "❓";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 30px;
+  background: linear-gradient(135deg, #ffc800 0%, #ffb700 100%);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.et28-pregunta > div:first-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.et28-pregunta b {
+  color: #58cc02;
+  text-shadow: 0 2px 4px rgba(88, 204, 2, 0.3);
+}
+
+/* Checkbox Forms */
+.et28-pregunta form {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.et28-pregunta form > * {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Custom Checkbox Styling */
+.et28-pregunta .MuiCheckbox-root {
+  color: #58cc02 !important;
+  transform: scale(1.3);
+  margin: 0 8px;
+}
+
+.et28-pregunta .MuiCheckbox-root.Mui-checked {
+  color: #58cc02 !important;
+  animation: successBounce 0.6s ease-out;
+}
+
+.et28-pregunta .MuiCheckbox-root:hover {
+  background-color: rgba(88, 204, 2, 0.1) !important;
+  transform: scale(1.4);
+}
+
+/* Verb Tense Buttons Container */
+.et28-tiempos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 30px 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  border-radius: 20px;
+  box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.et28-tiempos::before {
+  content: "⏰ 📝 🎯 ✨";
+  position: absolute;
+  top: -10px;
+  left: 20px;
+  font-size: 20px;
+  animation: floatEmojis 3s ease-in-out infinite;
+}
+
+/* Verb Tense Buttons */
+.et28-tiempos button {
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #1cb0f6 0%, #0ea5e9 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  padding: 15px 20px;
+  margin: 8px;
+  cursor: pointer;
+  min-width: 200px;
+  box-shadow: 0 6px 20px rgba(28, 176, 246, 0.3);
+  position: relative;
+  transform: translateY(0);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.et28-tiempos button::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  background-size: 300% 300%;
+  border-radius: 22px;
+  z-index: -1;
+  opacity: 0;
+  animation: rainbowBorder 2s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+.et28-tiempos button:hover:enabled {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 12px 30px rgba(28, 176, 246, 0.4);
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 100%);
+}
+
+.et28-tiempos button:hover:enabled::before {
+  opacity: 1;
+}
+
+.et28-tiempos button:active:enabled {
+  transform: translateY(-2px) scale(1.02);
+  animation: successBounce 0.6s ease-out;
+}
+
+/* Selected Button State */
+.et28-tiempos button[style*="border: green"] {
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 100%) !important;
+  color: white !important;
+  transform: translateY(-5px) scale(1.08) !important;
+  box-shadow: 0 15px 35px rgba(88, 204, 2, 0.4) !important;
+  animation: selectedPulse 2s ease-in-out infinite;
+  border: 3px solid #58cc02 !important;
+}
+
+.et28-tiempos button[style*="border: green"]::before {
+  opacity: 1;
+}
+
+/* Error State */
+.et28-tiempos button[style*="border: red"] {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+  color: white !important;
+  animation: errorShake 0.6s ease-in-out;
+  border: 3px solid #ff6b6b !important;
+}
+
+/* Disabled Button State */
+.et28-tiempos button:disabled {
+  background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+  box-shadow: 0 4px 10px rgba(149, 165, 166, 0.2);
+}
+
+.et28-tiempos button:disabled:hover {
+  transform: none;
+  box-shadow: 0 4px 10px rgba(149, 165, 166, 0.2);
+}
+
+/* Help Icon Styling */
+.et28-sentence .MuiIconButton-root {
+  color: white !important;
+  background: rgba(255, 255, 255, 0.2);
+  margin-left: 10px;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.et28-sentence .MuiIconButton-root:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+/* Animations */
+@keyframes floatEmojis {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes gentleBounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rainbowBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes successBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes selectedPulse {
+  0%, 100% { box-shadow: 0 15px 35px rgba(88, 204, 2, 0.4); }
+  50% { box-shadow: 0 20px 40px rgba(88, 204, 2, 0.6); }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 940px) {
+  .et28-tiempos button {
+    min-width: 180px;
+    font-size: 15px;
+    padding: 12px 16px;
+  }
+  
+  .et28-sentence {
+    font-size: 22px;
+    padding: 18px 25px;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .et28-tiempos button {
+    min-width: 160px;
+    font-size: 14px;
+    padding: 12px 15px;
+  }
+  
+  .et28-pregunta {
+    width: 95%;
+    padding: 20px;
+  }
+  
+  .et28-sentence {
+    font-size: 20px;
+    padding: 16px 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .et28-tiempos button {
+    min-width: 140px;
+    font-size: 13px;
+    padding: 10px 12px;
+  }
+  
+  .et28-pregunta form {
+    gap: 20px;
+  }
+  
+  .et28-sentence {
+    font-size: 18px;
+    padding: 15px 18px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .et28-tiempos button {
+    min-width: 120px;
+    font-size: 12px;
+    padding: 10px;
+  }
+  
+  .et28-container {
+    padding: 15px;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .et28-tiempos button {
+    min-width: 90%;
+    font-size: 14px;
+    padding: 12px 15px;
+    margin: 5px 0;
+  }
+  
+  .et28-tiempos {
+    gap: 10px;
+  }
+  
+  .et28-pregunta {
+    width: 98%;
+    padding: 15px;
+  }
+  
+  .et28-sentence {
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .et28-container::before,
+  .et28-container::after,
+  .et28-sentence,
+  .et28-pregunta::before,
+  .et28-sentence::before,
+  .et28-tiempos::before,
+  .et28-tiempos button::before,
+  .et28-sentence .MuiIconButton-root {
+    animation: none;
+  }
+  
+  .et28-container *,
+  .et28-tiempos button {
+    transition: none;
+  }
+}

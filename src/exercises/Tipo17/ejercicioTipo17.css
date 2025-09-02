@@ -1,0 +1,263 @@
+/* ===== DUOLINGO-INSPIRED GAME DESIGN FOR TIPO17 ===== */
+
+/* Decorative floating emojis */
+.et17-container::before {
+  content: '🎧👂🔊🎵✨';
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* Main container with game-like background */
+.et17-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 25px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  overflow: visible;
+}
+
+/* Individual exercise cards */
+.et17-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  transition: all 0.3s ease;
+  min-width: 200px;
+  overflow: hidden;
+}
+
+/* Rainbow border effect for cards */
+.et17-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: -3px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, 
+    #96ceb4, #ffeaa7, #dda0dd, 
+    #ff6b6b);
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Card hover effects */
+.et17-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Listening icon for cards */
+.et17-card::after {
+  content: '🎧';
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 18px;
+  opacity: 0.7;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Answer input area */
+.et17-value {
+  width: 100%;
+  text-align: center;
+  padding: 15px 20px;
+  background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 15px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: #2d3748;
+  border: 3px solid #cbd5e0;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  margin-top: 15px;
+  min-height: 50px;
+}
+
+/* Empty state styling */
+.et17-value:empty::before {
+  content: '👆 Haz clic para responder';
+  color: #718096;
+  font-style: italic;
+  font-size: 14px;
+}
+
+/* Hover effects for answer area */
+.et17-value:hover {
+  transform: translateY(-2px);
+  border-color: #1cb0f6;
+  box-shadow: 
+    0 6px 20px rgba(28, 176, 246, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* Success state */
+.et17-value[style*="green"] {
+  border-color: #58cc02 !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  color: #22c55e !important;
+  animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Error state */
+.et17-value[style*="red"] {
+  border-color: #ff6b6b !important;
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  color: #ef4444 !important;
+  animation: errorShake 0.6s ease-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Answer feedback text */
+.et1-column-answer {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  margin-top: 8px;
+  background: linear-gradient(145deg, #f7fafc 0%, #e2e8f0 100%);
+  border: 2px solid #cbd5e0;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* Correct answer styling */
+.et1-column-answer[style*="green"] {
+  color: #22c55e !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  border-color: #22c55e !important;
+}
+
+/* Incorrect answer styling */
+.et1-column-answer[style*="red"] {
+  color: #ef4444 !important;
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  border-color: #ef4444 !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .et17-container {
+    padding: 20px 15px;
+  }
+  
+  .et17-card {
+    margin: 15px 10px;
+    min-width: 180px;
+    padding: 15px;
+  }
+  
+  .et17-value {
+    padding: 12px 15px;
+    font-size: 14px;
+    height: 45px;
+    min-height: 45px;
+  }
+  
+  .et17-value:empty::before {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .et17-container {
+    padding: 15px 10px;
+  }
+  
+  .et17-card {
+    margin: 10px 5px;
+    min-width: 160px;
+    padding: 12px;
+  }
+  
+  .et17-value {
+    padding: 10px 12px;
+    font-size: 13px;
+  height: 40px;
+    min-height: 40px;
+  }
+  
+  .et17-card::after {
+    font-size: 16px;
+    top: 8px;
+    right: 12px;
+  }
+}
+
+/* Accessibility for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

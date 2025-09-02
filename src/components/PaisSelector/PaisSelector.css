@@ -1,0 +1,244 @@
+/* ===== DUOLINGO-INSPIRED GAME DESIGN FOR PAIS SELECTOR ===== */
+
+/* Main container */
+.pais-selector-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  position: relative;
+}
+
+/* Decorative floating emojis */
+.pais-selector-container::before {
+  content: '🌍🎌🗣️✨';
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  animation: float 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateX(-50%) translateY(0px); }
+  50% { transform: translateX(-50%) translateY(-8px); }
+}
+
+/* Label styling */
+.pais-selector-label {
+  margin: 10px 0 15px 0 !important;
+  color: #2d3748;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 2px solid #cbd5e0;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+.pais-selector-label::before {
+  content: '🎧';
+  margin-right: 8px;
+}
+
+/* Flags container */
+.pais-selector-flags {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 15px 20px;
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  position: relative;
+  gap: 15px;
+}
+
+/* Rainbow border effect */
+.pais-selector-flags::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: -3px;
+  border-radius: 20px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, 
+    #96ceb4, #ffeaa7, #dda0dd, 
+    #ff6b6b);
+  background-size: 300% 300%;
+  animation: gradientShift 4s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Individual flag styling */
+.pais-selector-flag {
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  object-fit: cover;
+  position: relative;
+}
+
+/* Hover effects */
+.pais-selector-flag:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-color: #1cb0f6;
+}
+
+/* Active/selected state */
+.pais-selector-flag.active {
+  border-color: #58cc02 !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  box-shadow: 
+    0 0 0 3px rgba(88, 204, 2, 0.2),
+    0 8px 25px rgba(88, 204, 2, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transform: translateY(-2px) scale(1.05);
+  animation: selectedPulse 2s ease-in-out infinite;
+}
+
+@keyframes selectedPulse {
+  0%, 100% { box-shadow: 
+    0 0 0 3px rgba(88, 204, 2, 0.2),
+    0 8px 25px rgba(88, 204, 2, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8); }
+  50% { box-shadow: 
+    0 0 0 5px rgba(88, 204, 2, 0.3),
+    0 12px 30px rgba(88, 204, 2, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9); }
+}
+
+/* Success animation when selecting */
+.pais-selector-flag.selecting {
+  animation: selectBounce 0.4s ease-out;
+}
+
+@keyframes selectBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1.05); }
+}
+
+/* Country-specific styling hints */
+.pais-selector-flag[data-country="england"] {
+  border-color: #dc2626;
+}
+
+.pais-selector-flag[data-country="usa"] {
+  border-color: #1d4ed8;
+}
+
+.pais-selector-flag[data-country="australia"] {
+  border-color: #059669;
+}
+
+.pais-selector-flag[data-country="india"] {
+  border-color: #ea580c;
+}
+
+/* Tooltip effect */
+.pais-selector-flag::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(145deg, #1a202c 0%, #2d3748 100%);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.pais-selector-flag:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .pais-selector-flags {
+    padding: 12px 15px;
+    gap: 12px;
+  }
+  
+  .pais-selector-flag {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .pais-selector-label {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pais-selector-flags {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+  
+  .pais-selector-flag {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .pais-selector-label {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+  
+  .pais-selector-container::before {
+    font-size: 14px;
+    top: -20px;
+  }
+}
+
+/* Accessibility for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+} 

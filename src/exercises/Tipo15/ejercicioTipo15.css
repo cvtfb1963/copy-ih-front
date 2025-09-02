@@ -1,0 +1,359 @@
+/* ===== TIPO 15 - DICTATION EXERCISE ===== */
+
+.et15-sentence {
+  width: 100%;
+  align-items: flex-start;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  display: flex;
+  margin: 25px 0;
+  padding: 30px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.et15-sentence::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    #667eea 0%, 
+    #764ba2 25%, 
+    #f093fb 50%, 
+    #f5576c 75%, 
+    #4facfe 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et15-sentence:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.et15-sentence:hover::before {
+  opacity: 1;
+}
+
+/* Dictation Theme Indicator */
+.et15-sentence::after {
+  content: '✍️';
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et15-sentence:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced Number Badge */
+.et15-sentence span {
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 18px;
+  margin-right: 20px;
+  margin-top: 8px;
+  box-shadow: 
+    0 6px 20px rgba(102, 126, 234, 0.3),
+    0 2px 8px rgba(102, 126, 234, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.et15-sentence span::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2, #f093fb, #f5576c);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.et15-sentence:hover span {
+  transform: scale(1.05);
+  box-shadow: 
+    0 8px 25px rgba(102, 126, 234, 0.4),
+    0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.et15-sentence:hover span::before {
+  opacity: 1;
+}
+
+/* Success State for Number Badge */
+.et15-sentence span[style*="green"] {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%) !important;
+  box-shadow: 
+    0 6px 20px rgba(72, 187, 120, 0.3),
+    0 2px 8px rgba(72, 187, 120, 0.2) !important;
+}
+
+.et15-sentence span[style*="green"]::before {
+  background: linear-gradient(135deg, #48bb78, #38a169, #68d391) !important;
+}
+
+/* Error State for Number Badge */
+.et15-sentence span[style*="red"] {
+  background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%) !important;
+  box-shadow: 
+    0 6px 20px rgba(245, 101, 101, 0.3),
+    0 2px 8px rgba(245, 101, 101, 0.2) !important;
+  animation: shake 0.5s ease-in-out;
+}
+
+.et15-sentence span[style*="red"]::before {
+  background: linear-gradient(135deg, #f56565, #e53e3e, #fc8181) !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) scale(1.05); }
+  25% { transform: translateX(-3px) scale(1.05); }
+  75% { transform: translateX(3px) scale(1.05); }
+}
+
+/* TextField Container Enhancement */
+.et15-sentence .MuiTextField-root {
+  flex: 1;
+  margin: 0 !important;
+  min-width: 0;
+}
+
+/* Enhanced TextField Styling */
+.et15-sentence .MuiInputBase-root {
+  background: linear-gradient(135deg, #ffffff 0%, #f7fafc 100%);
+  border-radius: 12px !important;
+  padding: 8px 16px !important;
+  font-size: 16px !important;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.et15-sentence .MuiInputBase-root:hover {
+  background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.et15-sentence .MuiInputBase-root.Mui-focused {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+  box-shadow: 
+    0 0 0 3px rgba(102, 126, 234, 0.1),
+    0 4px 16px rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+/* Success State TextField */
+.et15-sentence .MuiInputBase-root.Mui-focused.MuiInputBase-colorSuccess {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%);
+  box-shadow: 
+    0 0 0 3px rgba(72, 187, 120, 0.1),
+    0 4px 16px rgba(72, 187, 120, 0.15);
+}
+
+/* Error State TextField */
+.et15-sentence .MuiInputBase-root.Mui-error {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  box-shadow: 
+    0 0 0 3px rgba(245, 101, 101, 0.1),
+    0 4px 16px rgba(245, 101, 101, 0.15);
+  animation: shake 0.5s ease-in-out;
+}
+
+/* TextField Input Text */
+.et15-sentence .MuiInputBase-input {
+  color: #2d3748 !important;
+  font-weight: 500 !important;
+  line-height: 1.6 !important;
+  padding: 12px 0 !important;
+}
+
+/* Label Styling */
+.et15-sentence .MuiInputLabel-root {
+  color: #718096 !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+}
+
+.et15-sentence .MuiInputLabel-root.Mui-focused {
+  color: #667eea !important;
+  font-weight: 600 !important;
+}
+
+.et15-sentence .MuiInputLabel-root.Mui-error {
+  color: #e53e3e !important;
+}
+
+.et15-sentence .MuiInputLabel-root.MuiInputLabel-colorSuccess {
+  color: #38a169 !important;
+}
+
+/* Helper Text Styling */
+.et15-sentence .MuiFormHelperText-root {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
+  margin: 8px 0 0 0 !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  border: 1px solid #feb2b2;
+}
+
+/* Answer Display */
+.et15-sentence > p {
+  background: linear-gradient(135deg, #edf2f7 0%, #e2e8f0 100%);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 15px 0 0 0 !important;
+  font-size: 16px !important;
+  font-weight: 500;
+  line-height: 1.6 !important;
+  border: 2px solid #cbd5e0;
+  transition: all 0.3s ease;
+  width: calc(100% - 65px) !important;
+  margin-left: 65px !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.et15-sentence > p:hover {
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e0 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Success Answer */
+.et15-sentence > p[style*="color: green"] {
+  background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%) !important;
+  color: #22543d !important;
+  border-color: #9ae6b4 !important;
+  box-shadow: 0 4px 16px rgba(72, 187, 120, 0.15);
+}
+
+/* Error Answer */
+.et15-sentence > p[style*="color: red"] {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  color: #742a2a !important;
+  border-color: #feb2b2 !important;
+  box-shadow: 0 4px 16px rgba(245, 101, 101, 0.15);
+}
+
+/* Underline Animation */
+.et15-sentence .MuiInput-underline:before {
+  border-bottom: 2px solid #e2e8f0 !important;
+  transition: border-bottom-color 0.3s ease !important;
+}
+
+.et15-sentence .MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid #cbd5e0 !important;
+}
+
+.et15-sentence .MuiInput-underline:after {
+  border-bottom: 2px solid #667eea !important;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.et15-sentence .MuiInput-underline.Mui-focused:after {
+  transform: scaleX(1);
+}
+
+.et15-sentence .MuiInput-underline.Mui-error:after {
+  border-bottom-color: #e53e3e !important;
+}
+
+.et15-sentence .MuiInput-underline.MuiInput-colorSuccess:after {
+  border-bottom-color: #38a169 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .et15-sentence {
+    padding: 25px 20px;
+    margin: 20px 0;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .et15-sentence span {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin-right: 0;
+    margin-bottom: 15px;
+    align-self: center;
+  }
+  
+  .et15-sentence .MuiTextField-root {
+    margin: 0 !important;
+  }
+  
+  .et15-sentence > p {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-top: 15px !important;
+    font-size: 15px !important;
+    padding: 12px 16px;
+  }
+  
+  .et15-sentence::after {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .et15-sentence {
+    padding: 20px 15px;
+  }
+  
+  .et15-sentence span {
+    width: 35px;
+    height: 35px;
+    font-size: 15px;
+  }
+  
+  .et15-sentence .MuiInputBase-input {
+    font-size: 15px !important;
+  }
+  
+  .et15-sentence .MuiInputLabel-root {
+    font-size: 15px !important;
+  }
+  
+  .et15-sentence > p {
+    font-size: 14px !important;
+    padding: 10px 14px;
+  }
+}

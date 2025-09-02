@@ -1,0 +1,458 @@
+/* Game-like UnidadControls Styling - Duolingo Inspired */
+
+/* Main container with game background */
+.unidad-controls-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
+  border-radius: 25px;
+  position: relative;
+  margin: 1rem 0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating decorative elements */
+.unidad-controls-wrapper::before {
+  content: '🎮';
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  animation: floatGame 3s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.unidad-controls-wrapper::after {
+  content: '⚡';
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+  font-size: 1.2rem;
+  animation: floatGame 4s ease-in-out infinite reverse;
+  opacity: 0.6;
+}
+
+@keyframes floatGame {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(5deg); }
+}
+
+/* Controls layout */
+.unidad-controls {
+  display: flex;
+  width: 100%;
+  max-width: 800px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+/* Game-style button containers */
+.game-button-container {
+  margin: 10px;
+  position: relative;
+  animation: buttonEntrance 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes buttonEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Game buttons base styling */
+.game-control-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.75rem !important;
+  padding: 1rem 2rem !important;
+  border: none !important;
+  border-radius: 25px !important;
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 1.1rem !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  cursor: pointer !important;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  position: relative !important;
+  overflow: visible !important;
+  min-width: 180px !important;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1) !important;
+  outline: none !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+.game-control-button:active {
+  transform: translateY(3px) !important;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Previous Button Styling */
+.game-control-button.previous-button {
+  background: linear-gradient(135deg, #1cb0f6 0%, #1899d6 100%) !important;
+  color: white !important;
+}
+
+.game-control-button.previous-button:hover {
+  background: linear-gradient(135deg, #2bc0ff 0%, #1fa9e6 100%) !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px rgba(28, 176, 246, 0.4) !important;
+}
+
+.game-control-button.previous-button:focus {
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(28, 176, 246, 0.3) !important;
+}
+
+/* Next Button Styling */
+.game-control-button.next-button {
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 100%) !important;
+  color: white !important;
+}
+
+.game-control-button.next-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #6dd602 0%, #52b302 100%) !important;
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.1), 0 8px 16px rgba(88, 204, 2, 0.4) !important;
+}
+
+.game-control-button.next-button:focus {
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.1), 0 0 0 4px rgba(88, 204, 2, 0.3) !important;
+}
+
+/* Disabled Next Button */
+.game-control-button.next-button:disabled {
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%) !important;
+  color: #6b7280 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+  transform: none !important;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.game-control-button.next-button:disabled:hover {
+  transform: none !important;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Button Icons Styling */
+.game-button-icon {
+  font-size: 1.3rem !important;
+  animation: iconFloat 2s ease-in-out infinite;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(-2px); }
+}
+
+.next-button .game-button-icon {
+  animation: iconFloatNext 2s ease-in-out infinite;
+}
+
+@keyframes iconFloatNext {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(2px); }
+}
+
+/* Button ripple effect */
+.game-control-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.game-control-button:active::before {
+  width: 300px;
+  height: 300px;
+  transition: width 0s, height 0s;
+}
+
+/* Game-style Progress Bar Container */
+.game-progress-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 0 2rem;
+}
+
+.game-progress-container.mobile {
+  margin: 1rem 0;
+  width: 100%;
+  max-width: none;
+}
+
+/* Enhanced Progress Bar Styling */
+.game-progressbar {
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100% !important;
+  max-width: 400px !important;
+  height: 50px !important;
+  border-radius: 25px !important;
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%) !important;
+  box-shadow: 
+    inset 0 4px 8px rgba(0, 0, 0, 0.1),
+    0 4px 0 rgba(0, 0, 0, 0.05) !important;
+  border: 3px solid #ffffff !important;
+  animation: progressBarEntrance 0.8s ease-out;
+}
+
+@keyframes progressBarEntrance {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* Progress Fill with Game Gradient */
+.game-progressbar .progress-fill {
+  height: 100% !important;
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 50%, #ffc800 100%) !important;
+  transition: width 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+  border-radius: 22px !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Animated shine effect on progress bar */
+.game-progressbar .progress-fill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.4) 50%, 
+    transparent 100%);
+  animation: progressShine 2s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Progress Percentage Text */
+.game-progress-percent {
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-weight: 800 !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #ffffff !important;
+  font-size: 1.1rem !important;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5) !important;
+  z-index: 2 !important;
+  animation: percentBounce 2s ease-in-out infinite;
+}
+
+@keyframes percentBounce {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Progress Bar Stars/Decorations */
+.game-progressbar::after {
+  content: '⭐';
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  animation: starTwinkle 2s ease-in-out infinite;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes starTwinkle {
+  0%, 100% { 
+    opacity: 0.7; 
+    transform: translateY(-50%) scale(1) rotate(0deg); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateY(-50%) scale(1.2) rotate(180deg); 
+  }
+}
+
+/* Floating particles around controls */
+.game-button-container::after {
+  content: '✨';
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 1rem;
+  animation: floatingParticle 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+.game-button-container:hover::after {
+  opacity: 1;
+}
+
+@keyframes floatingParticle {
+  0%, 100% { 
+    opacity: 0; 
+    transform: translateY(0) scale(0); 
+  }
+  50% { 
+    opacity: 1; 
+    transform: translateY(-15px) scale(1); 
+  }
+}
+
+/* Tooltip enhanced styling */
+.game-tooltip .MuiTooltip-tooltip {
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%) !important;
+  color: white !important;
+  font-family: 'Comic Sans MS', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 0.9rem !important;
+  font-weight: 600 !important;
+  border-radius: 15px !important;
+  padding: 0.8rem 1.2rem !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+  border: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .unidad-controls {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  
+  .game-button-container {
+    width: 100%;
+    margin: 0.5rem 0;
+  }
+  
+  .game-control-button {
+    min-width: 100% !important;
+    padding: 1rem 1.5rem !important;
+    font-size: 1rem !important;
+  }
+  
+  .game-progress-container {
+    order: -1;
+    margin: 0 0 1rem 0;
+  }
+  
+  .game-progressbar {
+    max-width: 100% !important;
+    height: 45px !important;
+  }
+  
+  .game-progress-percent {
+    font-size: 1rem !important;
+  }
+  
+  .unidad-controls-wrapper::before,
+  .unidad-controls-wrapper::after {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .unidad-controls-wrapper {
+    padding: 1rem 0.5rem;
+    margin: 0.5rem 0;
+  }
+  
+  .game-control-button {
+    padding: 0.875rem 1.25rem !important;
+    font-size: 0.9rem !important;
+    min-width: 100% !important;
+  }
+  
+  .game-button-icon {
+    font-size: 1.1rem !important;
+  }
+  
+  .game-progressbar {
+    height: 40px !important;
+  }
+  
+  .game-progress-percent {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  .game-control-button,
+  .game-button-icon,
+  .game-progressbar,
+  .game-progress-percent,
+  .game-button-container,
+  .unidad-controls-wrapper::before,
+  .unidad-controls-wrapper::after {
+    animation: none !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  .game-control-button:hover {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+  .game-control-button {
+    border: 3px solid #000 !important;
+  }
+  
+  .game-progressbar {
+    border: 3px solid #000 !important;
+  }
+  
+  .unidad-controls-wrapper {
+    border: 2px solid #000;
+  }
+}
+
+/* Focus styles for keyboard navigation */
+.game-control-button:focus-visible {
+  outline: 3px solid #ffc800 !important;
+  outline-offset: 2px !important;
+}
+
+/* Print styles */
+@media print {
+  .unidad-controls-wrapper {
+    background: white;
+    box-shadow: none;
+  }
+  
+  .unidad-controls-wrapper::before,
+  .unidad-controls-wrapper::after {
+    display: none;
+  }
+}

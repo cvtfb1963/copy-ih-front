@@ -1,0 +1,704 @@
+/* Tipo29 - Vocabulary Translation Exercise */
+/* Game-like styling with vocabulary and translation theme */
+
+/* Main Container */
+.gramatica-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.gramatica-container::before {
+  content: "📚 🌍 💭 ✨ 🎯";
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  animation: floatEmojis 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.gramatica-container::after {
+  content: "🔤 📝 🗣️ ⭐ 🌟";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 20px;
+  animation: floatEmojis 3s ease-in-out infinite reverse;
+  z-index: 1;
+}
+
+/* Vocabulary Info Section */
+.et29-vocabulary-info {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%);
+  border-radius: 20px;
+  padding: 25px;
+  margin: 20px 0;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e0e6ff;
+  position: relative;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.et29-vocabulary-info::before {
+  content: "📖";
+  position: absolute;
+  top: -15px;
+  left: 20px;
+  font-size: 30px;
+  background: linear-gradient(135deg, #ffc800 0%, #ffb700 100%);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Vocabulary Type and Level */
+.poppins-medium {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  font-size: 18px !important;
+  color: #2c3e50 !important;
+  font-weight: 600 !important;
+}
+
+.poppins-medium b {
+  color: #58cc02;
+  text-shadow: 0 2px 4px rgba(88, 204, 2, 0.3);
+  background: linear-gradient(135deg, #58cc02 0%, #46a302 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Explanation Section */
+.et29-explanation-section {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  background: linear-gradient(135deg, #1cb0f6 0%, #0ea5e9 100%);
+  color: white;
+  padding: 15px 20px;
+  border-radius: 15px;
+  margin: 15px 0;
+  box-shadow: 0 6px 20px rgba(28, 176, 246, 0.3);
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.et29-explanation-section .MuiSvgIcon-root {
+  color: #ffc800 !important;
+  font-size: 28px !important;
+  margin-right: 15px;
+  animation: spin 4s linear infinite;
+}
+
+.poppins-bold {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  margin: 0 !important;
+}
+
+/* Example Section */
+.poppins-regular {
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  color: #2c3e50 !important;
+  font-weight: 500 !important;
+}
+
+/* "Veamos un ejemplo:" text */
+.et29-example-intro {
+  background: linear-gradient(135deg, #54a0ff 0%, #2e86de 100%);
+  color: white !important;
+  padding: 10px 18px !important;
+  border-radius: 10px !important;
+  margin: 15px 0 8px 20px !important;
+  box-shadow: 0 4px 12px rgba(84, 160, 255, 0.3) !important;
+  font-weight: 600 !important;
+  font-size: 0.8em !important;
+  position: relative;
+  display: inline-block;
+  animation: slideInRight 0.6s ease-out;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.et29-example-intro::before {
+  content: "👀";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* Example content */
+.et29-example-content {
+  background: linear-gradient(135deg, #96ceb4 0%, #85c1a8 100%);
+  color: white !important;
+  padding: 15px 25px !important;
+  border-radius: 15px !important;
+  margin: 8px 0 15px 30px !important;
+  box-shadow: 0 6px 20px rgba(150, 206, 180, 0.4) !important;
+  position: relative;
+  font-weight: 600 !important;
+  font-size: 0.9em !important;
+  border-left: 5px solid #58cc02;
+  animation: slideInLeft 0.8s ease-out;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.et29-example-content::before {
+  content: "💡";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;
+  background: #ffc800;
+  border-radius: 50%;
+  padding: 6px;
+  box-shadow: 0 4px 12px rgba(255, 200, 0, 0.4);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.et29-example-content::after {
+  content: "✨";
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  font-size: 16px;
+  animation: spin 3s linear infinite;
+}
+
+/* "Ahora, ejercitemos:" text */
+.et29-practice-intro {
+  background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
+  color: white !important;
+  padding: 10px 18px !important;
+  border-radius: 10px !important;
+  margin: 15px 0 10px 20px !important;
+  box-shadow: 0 4px 12px rgba(255, 159, 243, 0.3) !important;
+  font-weight: 600 !important;
+  font-size: 0.8em !important;
+  position: relative;
+  display: inline-block;
+  animation: slideInRight 1s ease-out;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.et29-practice-intro::before {
+  content: "🎯";
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  animation: bounce 2s ease-in-out infinite 0.5s;
+}
+
+.et29-practice-intro::after {
+  content: "💪";
+  position: absolute;
+  right: -8px;
+  top: -8px;
+  font-size: 16px;
+  animation: bounce 2.5s ease-in-out infinite;
+}
+
+
+
+/* Sentence Containers */
+.et6-sentence {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 15px 0;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.et6-sentence::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+  background-size: 400% 400%;
+  border-radius: 23px;
+  z-index: -1;
+  animation: rainbowBorder 3s ease-in-out infinite;
+}
+
+.et6-sentence::after {
+  content: "🔄";
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  font-size: 24px;
+  animation: spin 4s linear infinite;
+}
+
+.et6-sentence:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Sentence Text */
+.et29-spanish-text {
+  font-weight: 700;
+  font-size: 18px;
+  color: #2c3e50;
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 15px;
+  background: linear-gradient(135deg, #e8f4fd 0%, #d1ecf1 100%);
+  border-radius: 15px;
+  border-left: 5px solid #1cb0f6;
+  position: relative;
+}
+
+.et29-spanish-text::before {
+  content: "🇪🇸";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input Container */
+.et6-sentence > div {
+  margin: 10px;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Input Fields */
+.et6-sentence input {
+  width: 100%;
+  min-width: 250px;
+  padding: 15px 20px;
+  border: 3px solid #e0e6ff;
+  border-radius: 15px;
+  font-size: 16px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 600;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.et6-sentence input::placeholder {
+  color: #95a5a6;
+  font-style: italic;
+}
+
+.et6-sentence input:focus {
+  outline: none;
+  border-color: #58cc02;
+  box-shadow: 0 8px 25px rgba(88, 204, 2, 0.2);
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f0fff4 0%, #e8f5e8 100%);
+}
+
+.et6-sentence input:hover:not(:disabled) {
+  border-color: #1cb0f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(28, 176, 246, 0.2);
+}
+
+.et6-sentence input:disabled {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Success State */
+.et6-sentence input[style*="border: 2px solid green"] {
+  border: 3px solid #58cc02 !important;
+  background: linear-gradient(135deg, #f0fff4 0%, #e8f5e8 100%) !important;
+  animation: successBounce 0.6s ease-out;
+  box-shadow: 0 8px 25px rgba(88, 204, 2, 0.3) !important;
+}
+
+/* Error State */
+.et6-sentence input[style*="border: 2px solid red"] {
+  border: 3px solid #ff6b6b !important;
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  animation: errorShake 0.6s ease-in-out;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3) !important;
+}
+
+/* Select Dropdowns */
+.et6-sentence select {
+  width: 280px;
+  padding: 15px 20px;
+  border: 3px solid #e0e6ff;
+  border-radius: 15px;
+  font-size: 16px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 600;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2358cc02' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+  padding-right: 50px;
+}
+
+.et6-sentence select:focus {
+  outline: none;
+  border-color: #58cc02;
+  box-shadow: 0 8px 25px rgba(88, 204, 2, 0.2);
+  transform: translateY(-2px);
+}
+
+.et6-sentence select:hover:not(:disabled) {
+  border-color: #1cb0f6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(28, 176, 246, 0.2);
+}
+
+.et6-sentence select:disabled {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #6c757d;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* Success State for Select */
+.et6-sentence select[style*="border: 3px solid green"] {
+  border: 3px solid #58cc02 !important;
+  background: linear-gradient(135deg, #f0fff4 0%, #e8f5e8 100%) !important;
+  animation: successBounce 0.6s ease-out;
+  box-shadow: 0 8px 25px rgba(88, 204, 2, 0.3) !important;
+}
+
+/* Error State for Select */
+.et6-sentence select[style*="border: 3px solid red"] {
+  border: 3px solid #ff6b6b !important;
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  animation: errorShake 0.6s ease-in-out;
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3) !important;
+}
+
+/* Answer Display */
+.et29-answer-display {
+  margin-top: 10px !important;
+  padding: 12px 18px !important;
+  border-radius: 12px !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  display: inline-block;
+}
+
+.et29-answer-display[style*="color: green"] {
+  background: linear-gradient(135deg, #f0fff4 0%, #e8f5e8 100%) !important;
+  border: 2px solid #58cc02 !important;
+  color: #58cc02 !important;
+}
+
+.et29-answer-display[style*="color: red"] {
+  background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
+  border: 2px solid #ff6b6b !important;
+  color: #ff6b6b !important;
+}
+
+.et29-answer-display:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.et29-answer-display::before {
+  content: "🇬🇧";
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Complementary Sentence Groups */
+.gramatica-container > div[style*="border: 3px solid"] {
+  background: linear-gradient(135deg, #f8f9ff 0%, #ffffff 100%) !important;
+  border: 3px solid transparent !important;
+  border-radius: 25px !important;
+  padding: 25px !important;
+  margin: 20px 0 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.gramatica-container > div[style*="border: 3px solid"]::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3, #54a0ff);
+  background-size: 400% 400%;
+  border-radius: 28px;
+  z-index: -1;
+  animation: rainbowBorder 3s ease-in-out infinite;
+}
+
+.gramatica-container > div[style*="border: 3px solid"]::after {
+  content: "📚 🔗 ✨";
+  position: absolute;
+  top: -10px;
+  right: 20px;
+  font-size: 20px;
+  animation: floatEmojis 3s ease-in-out infinite;
+}
+
+.gramatica-container > div[style*="border: 3px solid"] > p {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #2c3e50 !important;
+  background: linear-gradient(135deg, #ffc800 0%, #ffb700 100%) !important;
+  color: white !important;
+  padding: 12px 20px !important;
+  border-radius: 15px !important;
+  margin: 10px !important;
+  box-shadow: 0 4px 15px rgba(255, 200, 0, 0.3) !important;
+  position: relative;
+}
+
+.gramatica-container > div[style*="border: 3px solid"] > p::before {
+  content: "📋";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Shown Answer Styling */
+.et29-shown-answer {
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0fff4 100%) !important;
+  color: #58cc02 !important;
+  padding: 15px 20px !important;
+  border-radius: 15px !important;
+  border: 2px solid #58cc02 !important;
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  box-shadow: 0 4px 15px rgba(88, 204, 2, 0.2) !important;
+  position: relative;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+}
+
+.et29-shown-answer::before {
+  content: "✅";
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  background: white;
+  border-radius: 50%;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes floatEmojis {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(5deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes rainbowBorder {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes successBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .et6-sentence {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 15px;
+  }
+  
+  .et6-sentence > p {
+    min-width: auto;
+    margin: 10px 0;
+    font-size: 16px;
+  }
+  
+  .et6-sentence > div {
+    width: 100%;
+    margin: 10px 0;
+  }
+  
+  .et6-sentence input,
+  .et6-sentence select {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .gramatica-container::before,
+  .gramatica-container::after {
+    font-size: 18px;
+  }
+  
+  .et29-vocabulary-info {
+    padding: 20px;
+    margin: 15px 0;
+  }
+  
+  .poppins-medium {
+    font-size: 16px !important;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .et6-sentence {
+    padding: 12px;
+    margin: 10px 0;
+  }
+  
+  .et6-sentence > p {
+    font-size: 14px;
+    padding: 12px;
+  }
+  
+  .et6-sentence input,
+  .et6-sentence select {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+  
+  .et29-vocabulary-info {
+    padding: 15px;
+  }
+  
+  .poppins-medium {
+    font-size: 14px !important;
+  }
+  
+  .poppins-bold {
+    font-size: 14px !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .gramatica-container::before,
+  .gramatica-container::after,
+  .et29-vocabulary-info::before,
+  .et29-explanation-section .MuiSvgIcon-root,
+  .et29-example-intro::before,
+  .et29-example-content::before,
+  .et29-example-content::after,
+  .et29-practice-intro::before,
+  .et29-practice-intro::after,
+  .et6-sentence::before,
+  .et6-sentence::after,
+  .et29-spanish-text::before,
+  .gramatica-container > div[style*="border: 3px solid"]::before,
+  .gramatica-container > div[style*="border: 3px solid"]::after {
+    animation: none;
+  }
+  
+  .et6-sentence,
+  .et6-sentence input,
+  .et6-sentence select,
+  .et29-answer-display,
+  .et29-example-intro,
+  .et29-example-content,
+  .et29-practice-intro,
+  .et29-explanation-section {
+    transition: none;
+  }
+}

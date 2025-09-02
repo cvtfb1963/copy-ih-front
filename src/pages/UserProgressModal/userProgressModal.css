@@ -1,0 +1,29 @@
+.nsm-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nsm-center {
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+}
+
+.user-progress-modal-container {
+  padding: 20px;
+  margin: 20px;
+  background-color: white;
+  border: 1px solid black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  min-width: 50%;
+  display: flex;
+  flex-direction: column;
+}

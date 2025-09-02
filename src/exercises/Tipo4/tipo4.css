@@ -1,0 +1,42 @@
+.tipo4-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tipo4-diagrama {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 20px;
+}
+
+.tipo4-left,
+.tipo4-right > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* width: 100%; */
+}
+
+.tipo4-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* width: 100%; */
+}
+
+.tipo4-shown {
+  font-weight: 600;
+  font-size: 12px;
+  max-width: 70px;
+}
+
+.tipo4-select {
+  border-radius: 5px;
+  width: auto;
+  font-size: 12px;
+  max-width: 70px;
+}

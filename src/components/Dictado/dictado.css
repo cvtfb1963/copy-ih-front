@@ -1,0 +1,358 @@
+/* ===== DUOLINGO-INSPIRED GAME DESIGN FOR DICTADO OPTIMIZED ===== */
+
+/* Enhanced bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Main dictado container */
+.dictado-container {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 15px;
+  padding: 12px;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 3px solid #e2e8f0;
+  transition: all 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  position: relative;
+  overflow: hidden;
+  gap: 12px;
+}
+
+/* Container hover effects */
+.dictado-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border-color: #1cb0f6;
+}
+
+/* Rainbow border effect for active recording */
+.dictado-container.recording::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  margin: -3px;
+  border-radius: 15px;
+  background: linear-gradient(45deg, 
+    #ff6b6b, #4ecdc4, #45b7d1, 
+    #96ceb4, #ffeaa7, #dda0dd, 
+    #ff6b6b);
+  background-size: 300% 300%;
+  animation: gradientShift 2s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Input field styling */
+.dictado-container input {
+  flex: 1;
+  border: 2px solid #cbd5e0 !important;
+  border-radius: 12px !important;
+  padding: 10px 15px !important;
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%) !important;
+  font-family: 'Comic Sans MS', cursive, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #2d3748 !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+  transition: all 0.3s ease !important;
+  min-height: 40px !important;
+}
+
+/* Input focus state */
+.dictado-container input:focus {
+  outline: none !important;
+  border-color: #58cc02 !important;
+  box-shadow: 
+    0 0 0 3px rgba(88, 204, 2, 0.1),
+    0 4px 12px rgba(88, 204, 2, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* Success state for correct answers */
+.dictado-container input[style*="green"] {
+  border-color: #58cc02 !important;
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  animation: successBounce 0.6s ease-out;
+}
+
+@keyframes successBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Error state for incorrect answers */
+.dictado-container input[style*="red"] {
+  border-color: #ff6b6b !important;
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  animation: errorShake 0.6s ease-out;
+}
+
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Loading spinner container */
+.dictado-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  background: linear-gradient(145deg, #f8fafc 0%, #e2e8f0 100%);
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%, 100% { 
+    transform: scale(1);
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 
+      0 6px 20px rgba(0, 0, 0, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Recording button container */
+.dictado-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Recording button styling */
+.dictado-button {
+  background: linear-gradient(145deg, #ff6b6b 0%, #ef4444 100%) !important;
+  border-radius: 50% !important;
+  width: 50px !important;
+  height: 50px !important;
+  border: none !important;
+  box-shadow: 
+    0 6px 20px rgba(239, 68, 68, 0.3),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  position: relative !important;
+}
+
+/* Recording button hover effects */
+.dictado-button:hover {
+  transform: translateY(-3px) scale(1.05) !important;
+  box-shadow: 
+    0 10px 30px rgba(239, 68, 68, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Active recording state */
+.dictado-button.recording {
+  background: linear-gradient(145deg, #58cc02 0%, #4ade80 100%) !important;
+  animation: recordingPulse 1s ease-in-out infinite !important;
+}
+
+@keyframes recordingPulse {
+  0%, 100% { 
+    box-shadow: 
+      0 6px 20px rgba(88, 204, 2, 0.3),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 
+      0 10px 30px rgba(88, 204, 2, 0.5),
+      inset 0 2px 0 rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+}
+
+/* Disabled button state */
+.dictado-button:disabled {
+  background: linear-gradient(145deg, #e2e8f0 0%, #cbd5e0 100%) !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+}
+
+.dictado-button:disabled:hover {
+  transform: none !important;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Microphone icon styling */
+.dictado-button .MuiSvgIcon-root {
+  font-size: 24px !important;
+  color: white !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dictado-button:disabled .MuiSvgIcon-root {
+  color: #9ca3af !important;
+  text-shadow: none !important;
+}
+
+/* Recording indicator */
+.dictado-button.recording::after {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 3px solid #58cc02;
+  border-radius: 50%;
+  animation: recordingRing 1.5s ease-in-out infinite;
+}
+
+@keyframes recordingRing {
+  0% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* Bounce animation for recording */
+.dictado-bounce {
+  animation: bounce 1s infinite ease-in-out;
+}
+
+/* Enhanced bounce for recording state */
+.dictado-bounce.recording {
+  animation: recordingBounce 0.8s infinite ease-in-out;
+}
+
+@keyframes recordingBounce {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Success feedback */
+.dictado-success {
+  background: linear-gradient(145deg, #f0fff4 0%, #e6ffed 100%) !important;
+  border-color: #58cc02 !important;
+}
+
+/* Error feedback */
+.dictado-error {
+  background: linear-gradient(145deg, #fff5f5 0%, #fed7d7 100%) !important;
+  border-color: #ff6b6b !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .dictado-container {
+    padding: 10px;
+    gap: 10px;
+  }
+  
+  .dictado-container input {
+    padding: 8px 12px !important;
+    font-size: 13px !important;
+    min-height: 35px !important;
+  }
+  
+  .dictado-button {
+    width: 45px !important;
+    height: 45px !important;
+  }
+  
+  .dictado-button .MuiSvgIcon-root {
+    font-size: 20px !important;
+  }
+  
+  .dictado-loading {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dictado-container {
+    padding: 8px;
+    gap: 8px;
+  }
+  
+  .dictado-container input {
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    min-height: 32px !important;
+  }
+  
+  .dictado-button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  
+  .dictado-button .MuiSvgIcon-root {
+    font-size: 18px !important;
+  }
+  
+  .dictado-loading {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Accessibility for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
